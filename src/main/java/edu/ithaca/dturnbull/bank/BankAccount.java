@@ -60,7 +60,11 @@ public class BankAccount {
             return false;
         }
 
-        else if (email.substring(email.indexOf('@')).length() <= 4){
+        // else if (email.substring(email.indexOf('@')).length() <= 4){
+        //     return false;
+        // }
+
+        else if (!Character.isLetter(email.charAt(email.length() - 2))){
             return false;
         }
 
