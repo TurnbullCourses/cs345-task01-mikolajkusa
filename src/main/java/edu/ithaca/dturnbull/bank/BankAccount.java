@@ -52,6 +52,10 @@ public class BankAccount {
             return false;
         }
 
+        else if (email.charAt(email.indexOf('.')) == email.charAt(email.length() - 1)){
+            return false;
+        }
+
         else if (email.charAt(email.indexOf('.')) == email.charAt(email.indexOf('.') + 1)){
             return false;
         }
@@ -59,10 +63,6 @@ public class BankAccount {
         else if (!Character.isLetter(email.charAt(0))){
             return false;
         }
-
-        // else if (email.substring(email.indexOf('@')).length() <= 4){
-        //     return false;
-        // }
 
         else if (!Character.isLetter(email.charAt(email.length() - 2))){
             return false;
