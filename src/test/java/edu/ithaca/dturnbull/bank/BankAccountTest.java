@@ -20,6 +20,20 @@ class BankAccountTest {
 
         assertEquals(100, bankAccount.getBalance(), 0.001);
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(300));
+        assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(101));
+        
+        bankAccount.withdraw(99);
+        assertEquals(1, bankAccount.getBalance());
+        assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(-1));
+        assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(-100));
+        
+        bankAccount.withdraw(0);
+        assertEquals(1, bankAccount.getBalance());
+        bankAccount.withdraw(1);
+        assertEquals(0, bankAccount.getBalance());
+
+
+        
 
        
     }
