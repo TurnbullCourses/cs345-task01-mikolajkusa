@@ -8,9 +8,19 @@ class BankAccountTest {
 
     @Test
     void getBalanceTest() {
-        BankAccount bankAccount = new BankAccount("a@b.com", 200);
+        BankAccount bankAccount = new BankAccount("a@b.com", 200); //balance is non zero
 
         assertEquals(200, bankAccount.getBalance(), 0.001);
+
+        BankAccount bankAccount2 = new BankAccount("a@b.com", 0); //balance is zero, boundary case
+
+        assertEquals(0, bankAccount2.getBalance(), 0.001);
+
+        BankAccount bankAccount3 = new BankAccount("a@b.com", -1); //balance is negative
+
+        assertEquals(-1, bankAccount3.getBalance(), 0.001);
+        
+
     }
 
     @Test
