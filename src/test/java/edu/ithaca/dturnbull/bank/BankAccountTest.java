@@ -20,17 +20,23 @@ class BankAccountTest {
 
         assertEquals(100, bankAccount.getBalance(), 0.001);
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(300));
+
+       
     }
 
     @Test
     void isEmailValidTest(){
         assertTrue(BankAccount.isEmailValid( "a@b.com")); // correct email format
         assertFalse( BankAccount.isEmailValid("")); // empty email, it is a border case 
-        assertFalse( BankAccount.isEmailValid("a-@bcc")); // no dashes before @, border case
+        assertFalse( BankAccount.isEmailValid("a-@b.cc")); // no dashes before @, border case
         assertFalse( BankAccount.isEmailValid("a..b@c")); // no consecutive periods, border case
         assertFalse( BankAccount.isEmailValid(".a@b")); // no non-letters at the first index, border case
         assertFalse( BankAccount.isEmailValid("a@b")); // length of email cannot be less than or equal to 3, border case
+        assertFalse( BankAccount.isEmailValid("a@")); //length of email must be greater than 3 characters
+        assertFalse( BankAccount.isEmailValid("@")); //length of email must be greater than 3 chracters
         assertFalse( BankAccount.isEmailValid("a@b.b")); // there must be two letters after the dot, border case
+        assertTrue( BankAccount.isEmailValid("a@b.bb")); // there must be two letters after the dot
+        assertFalse( BankAccount.isEmailValid("a@b.")); // there must be two letters after the dot
 
     }
 
