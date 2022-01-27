@@ -24,13 +24,13 @@ class BankAccountTest {
 
     @Test
     void isEmailValidTest(){
-        assertTrue(BankAccount.isEmailValid( "a@b.com"));
-        assertFalse( BankAccount.isEmailValid(""));
-        assertFalse( BankAccount.isEmailValid("a-@bcc"));
-        assertFalse( BankAccount.isEmailValid("a..b@c"));
-        assertFalse( BankAccount.isEmailValid(".a@b"));
-        assertFalse( BankAccount.isEmailValid("a@b"));
-        assertFalse( BankAccount.isEmailValid("a@b.b"));
+        assertTrue(BankAccount.isEmailValid( "a@b.com")); // correct email format
+        assertFalse( BankAccount.isEmailValid("")); // empty email, it is a border case 
+        assertFalse( BankAccount.isEmailValid("a-@bcc")); // no dashes before @, border case
+        assertFalse( BankAccount.isEmailValid("a..b@c")); // no consecutive periods, border case
+        assertFalse( BankAccount.isEmailValid(".a@b")); // no non-letters at the first index, border case
+        assertFalse( BankAccount.isEmailValid("a@b")); // length of email cannot be less than or equal to 3, border case
+        assertFalse( BankAccount.isEmailValid("a@b.b")); // there must be two letters after the dot, border case
 
     }
 
