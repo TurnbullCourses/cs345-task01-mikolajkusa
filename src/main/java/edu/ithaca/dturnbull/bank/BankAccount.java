@@ -31,6 +31,17 @@ public class BankAccount {
     }
 
     /**
+     * deposits money into the bank account balance
+     * @param amount of money to add to the balance
+     * @throws IllegalArgumentException if the amount is negative or contains more than 2 decimal places
+     */
+    public void deposit(double amount){
+
+    }
+
+    
+
+    /**
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      * @throws InsufficientFundsException if amount exceeds current balance or is a negative number
      */
