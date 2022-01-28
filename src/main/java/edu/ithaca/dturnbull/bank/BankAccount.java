@@ -21,6 +21,17 @@ public class BankAccount {
         }
         
     }
+    /**
+     * This method withdraws the amount sent through the parameter from the account the function is called on, then deposits
+     * the amount into the transferee account
+     * @param amount to be transferred
+     * @param transferee the bankAccount to which the amount is transferred to
+     * @throws InsufficientFundsException if the amount can't be deducted from the balance
+     * @throws InvalidArgumentException if the amount is invalid
+     */
+    public void transfer(double amount, BankAccount transferee){
+
+    }
 
     public double getBalance(){
         return balance;
