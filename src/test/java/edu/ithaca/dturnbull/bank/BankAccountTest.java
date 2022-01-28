@@ -94,6 +94,46 @@ class BankAccountTest {
     }
 
     @Test
+    void transferTest(){
+        BankAccount bankAccount = new BankAccount("a@b.com", 200);
+        BankAccount bankAccount2 = new BankAccount("c@b.com", 200);
+        
+        //amount transferred must be non negative
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.transfer(-0.01, bankAccount2));
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.transfer(-100, bankAccount2));
+        bankAccount.transfer(0, bankAccount2);//border case
+        assertEquals(200, bankAccount.getBalance(),0.001);
+        assertEquals(200, bankAccount2.getBalance(),0.001);
+        bankAccount.transfer(0.01, bankAccount2);
+        assertEquals(199.99, bankAccount.getBalance(),0.001);
+        assertEquals(200.01, bankAccount2.getBalance(),0.001);
+        bankAccount.transfer(100, bankAccount2);
+        assertEquals(99.99, bankAccount.getBalance(),0.001);
+        assertEquals(300.01, bankAccount2.getBalance(),0.001);
+
+        //amount transferred must not have more than 2 decimal places
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.transfer(49.999, bankAccount2));
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.transfer(49.9239493295, bankAccount2));
+        bankAccount.transfer(0.99, bankAccount2);//border case
+        assertEquals(99, bankAccount.getBalance(),0.001);
+        assertEquals(301, bankAccount2.getBalance(),0.001);
+        bankAccount.transfer(50.1, bankAccount2);
+        assertEquals(48.9, bankAccount.getBalance(),0.001);
+        assertEquals(350.1, bankAccount2.getBalance(),0.001);
+
+        //amount transferred from the transferer cannot exceed their account balance
+        assertThrows(InsufficientFundsException.class, ()-> bankAccount.transfer(48.91, bankAccount2));
+        assertThrows(InsufficientFundsException.class, ()-> bankAccount.transfer(5000, bankAccount2));
+        bankAccount.transfer(48.9, bankAccount2);//border case
+        assertEquals(0, bankAccount.getBalance(),0.001);
+        assertEquals(400, bankAccount2.getBalance(),0.001);
+
+        
+
+
+    }
+
+    @Test
     void constructorTest() {
         BankAccount bankAccount = new BankAccount("a@b.com", 200);
 
