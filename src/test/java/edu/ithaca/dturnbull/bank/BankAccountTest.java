@@ -49,9 +49,9 @@ class BankAccountTest {
         assertThrows(IllegalArgumentException.class, () -> bankAccount2.withdraw(-0.01));
         assertThrows(IllegalArgumentException.class, () -> bankAccount2.withdraw(-100));
         bankAccount2.withdraw(0);//border case
-        assertEquals(199.89, bankAccount.getBalance(),0.001);
+        assertEquals(199.89, bankAccount2.getBalance(),0.001);
         bankAccount2.withdraw(50);
-        assertEquals(149.89, bankAccount.getBalance(),0.001);
+        assertEquals(149.89, bankAccount2.getBalance(),0.001);
     }
 
     @Test
