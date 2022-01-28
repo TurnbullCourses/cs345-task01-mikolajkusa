@@ -86,8 +86,8 @@ class BankAccountTest {
 
         assertTrue(BankAccount.isAmountValid(10.1)); //amount must have 2 decimal places or less
         assertTrue(BankAccount.isAmountValid(10.11));//amount must have 2 decimal places or less, border case
-        assertTrue(BankAccount.isAmountValid(10.111));//amount must have 2 decimal places or less
-        assertTrue(BankAccount.isAmountValid(10.1111111));//amount must have 2 decimal places or less
+        assertFalse(BankAccount.isAmountValid(10.111));//amount must have 2 decimal places or less
+        assertFalse(BankAccount.isAmountValid(10.1111111));//amount must have 2 decimal places or less
 
 
 

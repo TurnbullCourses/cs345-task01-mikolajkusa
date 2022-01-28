@@ -50,7 +50,15 @@ public class BankAccount {
      * @return true if the amount is valid (positive and has 2 decimal spaces or less), false if otherwise
      */
     public static boolean isAmountValid(double amount){
-        return false;
+        if((amount*100)%1 != 0){
+            return false;
+        }
+        else if(amount<=0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public static boolean isEmailValid(String email){
