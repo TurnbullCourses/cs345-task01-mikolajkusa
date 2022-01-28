@@ -7,18 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class BankAccountTest {
 
     @Test
-    void getBalanceTest() {
+    void getBalanceEmailTest() {
         BankAccount bankAccount = new BankAccount("a@b.com", 200); //balance is non zero
 
         assertEquals(200, bankAccount.getBalance(), 0.001);
+        assertEquals("a@b.com", bankAccount.getEmail());
 
-        BankAccount bankAccount2 = new BankAccount("a@b.com", 0); //balance is zero, boundary case
+        BankAccount bankAccount2 = new BankAccount("cc@boi.ie", 0); //balance is zero, boundary case
 
         assertEquals(0, bankAccount2.getBalance(), 0.001);
-
-        BankAccount bankAccount3 = new BankAccount("a@b.com", -1); //balance is negative
-
-        assertEquals(-1, bankAccount3.getBalance(), 0.001);
+        assertEquals("cc@boi.ie", bankAccount2.getEmail());
         
 
     }
