@@ -27,9 +27,16 @@ public class BankAccount {
      * @param amount to be transferred
      * @param transferee the bankAccount to which the amount is transferred to
      * @throws InsufficientFundsException if the amount can't be deducted from the balance
-     * @throws InvalidArgumentException if the amount is invalid
+     * @throws IllegalArgumentException if the amount is invalid
      */
-    public void transfer(double amount, BankAccount transferee){
+    public void transfer(double amount, BankAccount transferee) throws InsufficientFundsException{
+        if (isAmountValid(amount)){
+            withdraw(amount);
+            transferee.deposit(amount);
+        }
+        else{
+            throw new IllegalArgumentException("Amount is invalid");
+        }
 
     }
 

@@ -94,7 +94,7 @@ class BankAccountTest {
     }
 
     @Test
-    void transferTest(){
+    void transferTest() throws InsufficientFundsException{
         BankAccount bankAccount = new BankAccount("a@b.com", 200);
         BankAccount bankAccount2 = new BankAccount("c@b.com", 200);
         
@@ -119,7 +119,7 @@ class BankAccountTest {
         assertEquals(301, bankAccount2.getBalance(),0.001);
         bankAccount.transfer(50.1, bankAccount2);
         assertEquals(48.9, bankAccount.getBalance(),0.001);
-        assertEquals(350.1, bankAccount2.getBalance(),0.001);
+        assertEquals(351.1, bankAccount2.getBalance(),0.001);
 
         //amount transferred from the transferer cannot exceed their account balance
         assertThrows(InsufficientFundsException.class, ()-> bankAccount.transfer(48.91, bankAccount2));
