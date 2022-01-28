@@ -54,6 +54,7 @@ class BankAccountTest {
         assertEquals(149.89, bankAccount2.getBalance(),0.001);
     }
 
+    
     @Test
     void isEmailValidTest(){
         assertTrue(BankAccount.isEmailValid( "a@b.com")); // correct email format
@@ -67,6 +68,28 @@ class BankAccountTest {
         assertFalse( BankAccount.isEmailValid("a@b.b")); // there must be two letters after the dot, border case
         assertTrue( BankAccount.isEmailValid("a@b.bb")); // there must be two letters after the dot
         assertFalse( BankAccount.isEmailValid("a@b.")); // there must be two letters after the dot
+
+    }
+
+    @Test
+    void depositTest(){
+        BankAccount bankAccount = new BankAccount("a@b.com", 200);
+        
+        //amount deposited must have no more than 2 decimal places
+        bankAccount.deposit(0.11);//border case
+        assertEquals(200.11, bankAccount.getBalance(),0.001);
+        bankAccount.deposit(0.01);//border case
+        assertEquals(200.12, bankAccount.getBalance(),0.001);
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(0.001));
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(12.21423543));
+
+        //amount deposited must be non negative
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(-0.01));
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(-100));
+        bankAccount.deposit(0);//border case
+        assertEquals(200.12, bankAccount.getBalance(),0.001);
+        bankAccount.deposit(100);
+        assertEquals(300.12, bankAccount.getBalance(),0.001);
 
     }
 
