@@ -44,6 +44,14 @@ public class BankAccount {
         }
     }
 
+    /**
+     * Static method that checks the amount for validity
+     * @param amount money to withdraw that is checked
+     * @return true if the amount is valid (positive and has 2 decimal spaces or less), false if otherwise
+     */
+    public static boolean isAmountValid(double amount){
+        return false;
+    }
 
     public static boolean isEmailValid(String email){
         if (email.indexOf('@') == -1){
