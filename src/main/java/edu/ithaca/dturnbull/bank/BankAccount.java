@@ -1,3 +1,7 @@
+/**
+ * @author Mikolaj Konieczny + Vivek Kumar
+ * last edited 1/32/2022
+ */
 package edu.ithaca.dturnbull.bank;
 
 public class BankAccount {
@@ -6,6 +10,7 @@ public class BankAccount {
     private double balance;
 
     /**
+     * Constructor for the bank account class
      * @throws IllegalArgumentException if email is invalid
      */
     public BankAccount(String email, double startingBalance){
@@ -39,11 +44,17 @@ public class BankAccount {
         }
 
     }
-
+    /**
+     * method that gets the current bank account balance
+     * @return account balance
+     */
     public double getBalance(){
         return balance;
     }
-
+    /**
+     * method that gets the email address tied to the bank account
+     * @return email address
+     */
     public String getEmail(){
         return email;
     }
@@ -99,7 +110,11 @@ public class BankAccount {
             return true;
         }
     }
-
+    /**
+     * Checks email address string for validity
+     * @param email
+     * @return true if valid, otherwise false
+     */
     public static boolean isEmailValid(String email){
         if (email.indexOf('@') == -1){
             return false;
