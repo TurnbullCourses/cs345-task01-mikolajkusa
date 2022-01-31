@@ -157,8 +157,8 @@ class BankAccountTest {
 
     @Test
     void isAmountValidTest(){
-        assertFalse(BankAccount.isAmountValid(-1)); //amount can't be less than or equal to zero
-        assertFalse(BankAccount.isAmountValid(-0.01)); //amount can't be less than or equal to zero
+        assertFalse(BankAccount.isAmountValid(-1)); //amount can't be less than  zero
+        assertFalse(BankAccount.isAmountValid(-0.01)); //amount can't be less than zero
         assertTrue(BankAccount.isAmountValid(0)); //amount can't be less than zero, border case
         
         assertTrue(BankAccount.isAmountValid(0.01)); //amount must be positive, border case
