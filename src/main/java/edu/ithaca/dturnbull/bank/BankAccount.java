@@ -14,7 +14,7 @@ public class BankAccount {
      * @throws IllegalArgumentException if email is invalid
      */
     public BankAccount(String email, double startingBalance){
-        if (isEmailValid(email)&&isAmountValid(startingBalance)){
+        if (isEmailValid(email) && isAmountValid(startingBalance)){
             this.email = email;
             this.balance = startingBalance;
         }
@@ -118,30 +118,31 @@ public class BankAccount {
      * @return true if valid, otherwise false
      */
     public static boolean isEmailValid(String email){
+        //ensures @ symbol isn't at the end of the address
         if (email.indexOf('@') == -1){
             return false;
         }
-
+        //ensures email length is more than 3 characters
         else if (email.length() <= 3){
             return false;
         }
-
+        //ensures dash symbol is not followed by an @
         else if (email.charAt(email.indexOf('-') + 1) == email.charAt(email.indexOf('@'))){
             return false;
         }
-
+        //ensures there is no dot at the end
         else if (email.charAt(email.indexOf('.')) == email.charAt(email.length() - 1)){
             return false;
         }
-
+        //ensures no consecutive dots
         else if (email.charAt(email.indexOf('.')) == email.charAt(email.indexOf('.') + 1)){
             return false;
         }
-
+        //ensures first character is a letter
         else if (!Character.isLetter(email.charAt(0))){
             return false;
         }
-
+        //ensures last two characters are letters
         else if (!Character.isLetter(email.charAt(email.length() - 2))){
             return false;
         }
