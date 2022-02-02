@@ -100,9 +100,11 @@ public class BankAccount {
      * @return true if the amount is valid (positive and has 2 decimal spaces or less), false if otherwise
      */
     public static boolean isAmountValid(double amount){
+        //ensures the amount has a maximum of two decimal places - multiply by 100 and ensure there are no remainders
         if((amount*100)%1 != 0){
             return false;
         }
+        //amount must be non-negative
         else if(amount<0){
             return false;
         }
